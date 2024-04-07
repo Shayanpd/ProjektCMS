@@ -1,0 +1,4 @@
+CREATE TABLE t_genre(
+    genreID INT AUTO_INCREMENT PRIMARY KEY,
+    genreName VARCHAR(50) NOT NULL
+);
