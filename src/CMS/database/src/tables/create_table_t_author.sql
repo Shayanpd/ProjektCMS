@@ -1,0 +1,5 @@
+CREATE TABLE t_author (
+    authorID INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    dateOfBirth DATE NOT NULL
+);
