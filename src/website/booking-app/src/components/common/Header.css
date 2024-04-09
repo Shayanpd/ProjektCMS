@@ -1,0 +1,11 @@
+/* src/components/common/Header.css */
+.site-header {
+    background-color: #102a43;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.site-header h1 {
+    margin: 0;
+}

@@ -1,0 +1,7 @@
+/* src/pages/HomePage.css */
+.homepage-banner img {
+    width: 100%; /* This will make the image responsive */
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Remove any unwanted space below the image */
+    margin-bottom: 20px; /* Space between the image and the event list */
+}

@@ -1,0 +1,14 @@
+/* src/components/common/Footer.css */
+.site-footer {
+    background-color: #102a43;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.site-footer p {
+    margin: 0;
+}
