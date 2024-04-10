@@ -1,7 +1,45 @@
 /* src/pages/HomePage.css */
-.homepage-banner img {
-    width: 100%; /* This will make the image responsive */
-    height: auto; /* Maintain the aspect ratio */
-    display: block; /* Remove any unwanted space below the image */
-    margin-bottom: 20px; /* Space between the image and the event list */
+.homepage-banner {
+    position: relative;
+    text-align: center; /* Center align for any text or buttons inside the banner */
+    margin-bottom: 40px; /* Increase space between the banner and the event list */
 }
+
+.homepage-banner img {
+    max-width: 25%; /* Limit the image to the width of its container */
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Display block to remove bottom space */
+    margin: 20px auto; /* Center the image if it's not as wide as the container */
+}
+
+/* Container for the fetch events button to help with positioning */
+.fetch-events-button-container {
+    display: flex; /* Use flexbox for easy centering */
+    justify-content: center; /* Center the button horizontally */
+    margin: 20px 0; /* Space above and below the button */
+}
+
+.fetch-events-button {
+    padding: 15px 30px; /* More padding for a larger button */
+    font-size: 18px; /* Slightly larger text */
+    background-color: #0056b3; /* A pleasant blue */
+    color: #fff; /* White text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor to pointer */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.fetch-events-button:hover,
+.fetch-events-button:focus { /* Hover and focus states */
+    background-color: #003d82; /* A darker blue for contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Larger shadow for 'lift' effect */
+}
+
+.fetch-events-button:disabled {
+    background-color: #ccc; /* Greyed out */
+    cursor: not-allowed; /* Cursor to indicate disabled */
+    box-shadow: none; /* No shadow for flat disabled button */
+}
+
