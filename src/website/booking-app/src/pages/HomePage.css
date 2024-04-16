@@ -18,9 +18,6 @@
     /* Center the image if it's not as wide as the container */
 }
 
-.homepage-item-name {
-    color: crimson;
-}
 
 /* Container for the fetch events button to help with positioning */
 .fetch-events-button-container {
