@@ -7,11 +7,6 @@ import eventImage from '../resources/events.png';
 import './HomePage.css'; // Add this line to import styles
 import { createDirectus, graphql } from '@directus/sdk';
 
-interface test {
-    id: Number;
-    Name: string;
-    description: string;
-}
 
 import {useQuery} from 'react-query' 
 import { getHomepage } from '../queries/queries.js';
