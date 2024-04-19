@@ -13,9 +13,16 @@ interface test {
     description: string;
 }
 
+import {useQuery} from 'react-query' 
+import { getHomepage } from '../queries/queries.js';
+
 const HomePage = () => {
     console.log("HomePage is rendering");
     const [loading, setLoading] = useState(false);
+
+    const { status, data: Home_Page, error, isFetching, isSuccess } = useQuery("Home_Page", async () => await getHomepage())
+
+    console.log(Home_Page)
 
     useEffect(() => {
 
@@ -78,6 +85,7 @@ const HomePage = () => {
             </div>
             <EventList />
             <Footer />
+            {isSuccess && Home_Page.map( (post) => (<div><img src={`http://localhost:8055/assets/${post.image.id}`} alt="Home Page Visual" /></div>))}
         </div>
     );
 };
