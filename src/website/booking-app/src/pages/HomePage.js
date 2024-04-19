@@ -5,7 +5,6 @@ import Footer from '../components/common/Footer';
 import EventList from '../components/EventList';
 import eventImage from '../resources/events.png';
 import './HomePage.css'; // Add this line to import styles
-import { createDirectus, graphql } from '@directus/sdk';
 
 
 import {useQuery} from 'react-query' 
