@@ -64,13 +64,20 @@ const HomePage = () => {
         <div>
             <Header />
             <div className="homepage-banner">
-                <img src={eventImage} alt="Banner" />
+                {isSuccess && Home_Page.map((post) => (
+                    <div key={post.id}>
+                        <img src={`http://localhost:8055/assets/${post.image.id}`} alt="Home Page Visual" />
+                        <h3>{post.title}</h3> {/* Display title */}
+                        <div
+                            dangerouslySetInnerHTML={{ __html: post.body }} // Render body as HTML
+                            className="homepage-body"
+                        ></div>
+                    </div>
+                ))}
             </div>
-            {/* Ensure the className here matches your new CSS for the button container */}
             <div className="fetch-events-button-container">
-                {/* Ensure the className here matches your new CSS for the button */}
                 <button
-                    onClick={() => retrieveTestCollectionFromCMS()}
+                    onClick={retrieveTestCollectionFromCMS}
                     disabled={loading}
                     className="fetch-events-button"
                 >
@@ -79,7 +86,6 @@ const HomePage = () => {
             </div>
             <EventList />
             <Footer />
-            {isSuccess && Home_Page.map( (post) => (<div><img src={`http://localhost:8055/assets/${post.image.id}`} alt="Home Page Visual" /></div>))}
         </div>
     );
 };

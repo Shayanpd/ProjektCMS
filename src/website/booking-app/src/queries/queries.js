@@ -7,6 +7,8 @@ export const getHomepage = async () => {
         query Homepage {
             Home_Page {
                 id
+                title
+                body
                 image {
                     id
                 }
