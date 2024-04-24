@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import EventList from '../components/EventList';
-import eventImage from '../resources/events.png';
 import './HomePage.css'; // Add this line to import styles
 
 
-import {useQuery} from 'react-query' 
+
+import {useQuery} from 'react-query'
 import { getHomepage } from '../queries/queries.js';
 
 const HomePage = () => {
@@ -31,32 +31,32 @@ const HomePage = () => {
                     password: process.env.REACT_APP_PASSWORD
                 })
             })
-            .then(res => res.json())
-            .then(authData => {
-                // Extract access_token from response and save in localStorage
-                const accessToken = authData.data.access_token;
-                localStorage.setItem('access_token', accessToken);
-                console.log('Updated token!')  
-            })
+                .then(res => res.json())
+                .then(authData => {
+                    // Extract access_token from response and save in localStorage
+                    const accessToken = authData.data.access_token;
+                    localStorage.setItem('access_token', accessToken);
+                    console.log('Updated token!')
+                })
         }
-        
+
     }, []);
-    
+
     const retrieveTestCollectionFromCMS = () => {
         setLoading(true); // Indicate the start of an API call
-        
+
         // Use access_token for a GET-request
         fetch('http://localhost:8055/items/test', {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('access_token')}`
             }
         })
-        .then(res => res.json())
-        .then(responseData => {
-            console.log(responseData);
-            setLoading(false);
-        })
-        
+            .then(res => res.json())
+            .then(responseData => {
+                console.log(responseData);
+                setLoading(false);
+            })
+
     };
 
 

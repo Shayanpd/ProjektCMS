@@ -1,0 +1,13 @@
+/* Assuming .App is the main container for your app */
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* This makes sure your app is at least the height of the viewport */
+    justify-content: space-between; /* Aligns children (header, content, footer) spaced out */
+
+}
+
+/* Assuming your main content has a .content class */
+.content {
+    flex: 1; /* This will push the footer down */
+}
