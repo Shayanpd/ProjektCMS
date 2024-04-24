@@ -1,0 +1,7 @@
+CREATE TABLE `EVENT_DATE` (
+    `eventDateId` INT NOT NULL AUTO_INCREMENT,
+    `eventId` INT NOT NULL,
+    `date` DATE NOT NULL,
+    PRIMARY KEY (`eventDateId`),
+    FOREIGN KEY (`eventId`) REFERENCES `EVENT`(`eventId`) ON DELETE CASCADE
+);
