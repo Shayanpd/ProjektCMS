@@ -4,7 +4,7 @@ import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import EventList from '../components/EventList';
 import './HomePage.css'; // Add this line to import styles
-import {useQuery, useQueryClient} from 'react-query' 
+import {useQuery, useQueryClient} from 'react-query'
 import { getHomepage } from '../queries/getHomePage.js';
 import { fetchTokens } from '../mutations/authenticate.js';
 import { refreshTokens } from '../mutations/refreshAuthentication.js';
@@ -17,12 +17,12 @@ const HomePage = () => {
 
     console.log(Home_Page);
 
-    
+
     useEffect(() => {
         fetchTokens();
-        
+
     }, []);
-    
+
     const retrieveTestCollectionFromCMS = async () => {
         setLoading(true); // Indicate the start of an API call
 
