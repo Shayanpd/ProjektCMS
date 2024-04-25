@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import EventList from '../components/EventList';
-import eventImage from '../resources/events.png';
 import './HomePage.css'; // Add this line to import styles
 import {useQuery, useQueryClient} from 'react-query' 
 import { getHomepage } from '../queries/queries.js';

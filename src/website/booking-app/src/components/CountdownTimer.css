@@ -1,0 +1,31 @@
+/* CountdownTimer.css */
+.countdown {
+    display: flex; /* Use flexbox to layout children horizontally */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    gap: 20px; /* Spacing between items */
+    position: relative; /* Establish a positioning context */
+    color: #ffffff; /* White text color */
+}
+
+.countdown-item {
+    text-align: center; /* Center the text within each countdown item */
+}
+
+.countdown-number {
+    font-size: 3em; /* Large font size for the countdown numbers */
+    font-weight: bold;
+}
+
+.countdown-label {
+    text-transform: uppercase; /* Uppercase labels (Days, Hours, etc.) */
+    font-size: 0.8em;
+}
+
+/* Optionally, if you want to position this over an image: */
+.countdown {
+    position: relative; /* Position over an image */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset the position by half the element's size */
+}
