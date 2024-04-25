@@ -5,7 +5,7 @@ import Footer from '../components/common/Footer';
 import EventList from '../components/EventList';
 import './HomePage.css'; // Add this line to import styles
 import {useQuery, useQueryClient} from 'react-query' 
-import { getHomepage } from '../queries/queries.js';
+import { getHomepage } from '../queries/getHomePage.js';
 import { fetchTokens } from '../mutations/authenticate.js';
 import { refreshTokens } from '../mutations/refreshAuthentication.js';
 
