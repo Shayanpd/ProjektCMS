@@ -5,58 +5,66 @@ import Footer from '../components/common/Footer';
 import EventList from '../components/EventList';
 import eventImage from '../resources/events.png';
 import './HomePage.css'; // Add this line to import styles
-
-
-import {useQuery} from 'react-query' 
+import {useQuery, useQueryClient} from 'react-query' 
 import { getHomepage } from '../queries/queries.js';
+import { fetchTokens } from '../mutations/authenticate.js';
+import { refreshTokens } from '../mutations/refreshAuthentication.js';
 
 const HomePage = () => {
     console.log("HomePage is rendering");
     const [loading, setLoading] = useState(false);
-
+    const queryClient = useQueryClient();
     const { status, data: Home_Page, error, isFetching, isSuccess } = useQuery("Home_Page", async () => await getHomepage())
 
-    console.log(Home_Page)
+    console.log(Home_Page);
 
+    
     useEffect(() => {
-
-        if (!localStorage.getItem('access_token')) {
-            fetch('http://localhost:8055/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: process.env.REACT_APP_EMAIL,
-                    password: process.env.REACT_APP_PASSWORD
-                })
-            })
-            .then(res => res.json())
-            .then(authData => {
-                // Extract access_token from response and save in localStorage
-                const accessToken = authData.data.access_token;
-                localStorage.setItem('access_token', accessToken);
-                console.log('Updated token!')  
-            })
-        }
+        fetchTokens();
         
     }, []);
     
-    const retrieveTestCollectionFromCMS = () => {
+    const retrieveTestCollectionFromCMS = async () => {
         setLoading(true); // Indicate the start of an API call
-        
-        // Use access_token for a GET-request
-        fetch('http://localhost:8055/items/test', {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+
+        try {
+            const accessToken = localStorage.getItem('access_token');
+
+            if (!accessToken) {
+                await fetchTokens();
             }
-        })
-        .then(res => res.json())
-        .then(responseData => {
+
+            const response = await fetch('http://localhost:8055/items/test', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                }
+            });
+
+            if (!response.ok) {
+                if (response.status === 401) {
+                    await refreshTokens();
+                    // Retry fetching data with new token
+                    const refreshedResponse = await fetch('http://localhost:8055/items/test', {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                        }
+                    });
+                    if (!refreshedResponse.ok) {
+                        throw new Error('Failed to fetch data');
+                    }
+                } else {
+                    throw new Error('Failed to fetch data');
+                }
+            }
+
+            const responseData = await response.json();
             console.log(responseData);
             setLoading(false);
-        })
-        
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            setLoading(false);
+            // Show 404 error message
+        }
     };
 
 
