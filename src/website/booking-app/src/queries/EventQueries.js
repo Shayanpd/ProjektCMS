@@ -1,6 +1,7 @@
+// src/queries/EventDetailQueries.jsch
 import fetchData from "../helpers/fetchData.js"
 
-export const getFirstEventPage = async () => {
+export const getEventById  = async () => {
     const data = await fetchData(
         `
         query Event_List {

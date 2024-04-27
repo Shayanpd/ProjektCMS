@@ -1,38 +1,54 @@
 // src/pages/EventPage.js
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import EventDetail from '../components/EventDetail';
-import { useParams } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
+import fetchData from "../helpers/fetchData";
 
 const EventPage = () => {
-    const { eventId } = useParams(); // This hooks into the router to get the event ID from the URL
+    const {eventId} = useParams();
     const [event, setEvent] = useState(null);
 
     useEffect(() => {
+
+
         // TODO: Replace with actual API call
         const fetchEvent = async () => {
             try {
-                // Mock data for now, replace this with an actual API call
-                const eventData = {
-                    id: eventId,
-                    title: 'Sample Event',
-                    date: '2024-04-10',
-                    location: 'Event Venue',
-                    description: 'This is a detailed description of the event.',
-                    imageUrl: '/path/to/event/image.jpg', // Placeholder image path
-                };
-                setEvent(eventData);
+                const data = await fetchData(
+                    `
+            query Event_List {
+            Event_List(filter: { id: { _eq: "${eventId}" } }) {
+                id
+                status
+                title
+                Full_Description
+                Short_Descrition
+                Date
+                link
+                Locations
+                image{
+                id
+                }
+            }
+        }
+        `,
+         {
+          variables: {}
+         }
+         )
+           setEvent(data);
+
             } catch (error) {
                 console.error('Error fetching event:', error);
                 // Handle error
             }
         };
-
         fetchEvent();
     }, [eventId]);
 
     return (
         <div>
-            <EventDetail event={event} />
+            <EventDetail event={event}/>
         </div>
     );
 };
