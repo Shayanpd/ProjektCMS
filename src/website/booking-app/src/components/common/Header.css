@@ -1,11 +1,22 @@
-/* src/components/common/Header.css */
+.button-container {
+    display: flex; /* Ensures buttons are in line */
+    gap: 10px; /* Spacing between buttons */
+    margin-left: auto; /* Pushes the container to the right */
+}
+
 .site-header {
     background-color: #557A95;
     color: #ffffff;
     padding: 10px 20px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .site-header h1 {
     margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
