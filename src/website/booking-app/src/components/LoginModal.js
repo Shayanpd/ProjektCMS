@@ -1,9 +1,18 @@
 // src/components/LoginModal.js
-import React from 'react';
+import React, { useState } from 'react';
 import './LoginModal.css';
+import { getUserByUsername } from "../queries/AuthService";
 
-const LoginModal = ({ isOpen, onClose }) => {
+
+const LoginModal = ({ isOpen, onClose, onOpenRegister }) => {
+
+
     if (!isOpen) return null;
+
+    const handleSignUpClick = () => {
+        onClose();        // Close the Login Modal
+        onOpenRegister(); // Open the Register Modal
+    };
 
     return (
         <div className="modal-background" onClick={onClose}>
@@ -25,7 +34,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                         </div>
                         <div className="btn">
                             <button className="button1">Login</button>
-                            <button className="button2">Sign Up</button>
+                            <button className="button2" onClick={handleSignUpClick}>Sign Up</button>
                         </div>
                         <button className="button3">Forgot Password</button>
                     </form>
