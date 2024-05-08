@@ -4,6 +4,9 @@ import EventDetail from '../components/EventDetail';
 import {useParams} from 'react-router-dom';
 import fetchData from "../helpers/fetchData";
 
+
+// Fetch Event Details data and pass to EventDetail
+
 const EventPage = () => {
     const {eventId} = useParams();
     const [event, setEvent] = useState(null);
@@ -11,7 +14,6 @@ const EventPage = () => {
     useEffect(() => {
 
 
-        // TODO: Replace with actual API call
         const fetchEvent = async () => {
             try {
                 const data = await fetchData(
