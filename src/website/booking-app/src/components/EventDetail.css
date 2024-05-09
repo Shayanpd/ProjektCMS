@@ -69,3 +69,20 @@
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.expired-message {
+    padding: 20px;
+    background-color: #ff6347; /* Tomato red, but choose a color that fits your theme */
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.expired-message:hover {
+    background-color: #e55347; /* A slightly darker shade for hover effect */
+}

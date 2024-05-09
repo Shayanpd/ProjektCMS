@@ -1,51 +1,26 @@
-// src/components/BookingForm.js
 import React, { useState } from 'react';
-import './BookingForm.css'; // Don't forget to create a CSS file for styling
+import './BookingForm.css'; // Make sure your CSS is updated accordingly
 
 const BookingForm = ({ eventId }) => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        numberOfTickets: 1,
-    });
+    const [numberOfTickets, setNumberOfTickets] = useState(1);
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
+        setNumberOfTickets(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form data submitted:', formData);
-        // Here you would typically send the data to the server
+        console.log('Number of tickets:', numberOfTickets);
+        // Here you would typically send the number of tickets to the server
     };
 
     return (
         <form onSubmit={handleSubmit} className="booking-form">
-            <h2>Book Your Tickets</h2>
-            <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Your Name"
-                required
-            />
-            <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Your Email"
-                required
-            />
+            <h2>How Many Tickets Do You Want To Buy?</h2>
             <input
                 type="number"
                 name="numberOfTickets"
-                value={formData.numberOfTickets}
+                value={numberOfTickets}
                 onChange={handleInputChange}
                 min="1"
                 placeholder="Number of Tickets"
