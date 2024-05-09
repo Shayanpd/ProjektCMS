@@ -6,8 +6,11 @@ import EventList from '../components/EventList';
 import './HomePage.css'; // Add this line to import styles
 import {useQuery, useQueryClient} from 'react-query'
 import { getHomepage } from '../queries/getHomePage.js';
+import { getTentipiIcon } from '../queries/getTentipiIcon';
 import { fetchTokens } from '../mutations/authenticate.js';
 import { refreshTokens } from '../mutations/refreshAuthentication.js';
+import { Link } from 'react-router-dom';
+
 
 const HomePage = () => {
     console.log("HomePage is rendering");
@@ -15,12 +18,19 @@ const HomePage = () => {
     const queryClient = useQueryClient();
     const { status, data: Home_Page, error, isFetching, isSuccess } = useQuery("Home_Page", async () => await getHomepage())
 
-    console.log(Home_Page);
-
+    const [tentipiIcon, setTentipiIcon] = useState(null);
 
     useEffect(() => {
-        fetchTokens();
+        const fetchTentipiIcon = async () => {
+            try {
+                const data = await getTentipiIcon();
+                setTentipiIcon(data.Icon);
+            } catch (error) {
+                console.error('Error fetching Tentipi icon:', error);
+            }
+        };
 
+        fetchTentipiIcon();
     }, []);
 
     const retrieveTestCollectionFromCMS = async () => {
@@ -73,7 +83,7 @@ const HomePage = () => {
             <div className="homepage-banner">
                 {isSuccess && Home_Page.map((post) => (
                     <div key={post.id}>
-                        <img src={`http://localhost:8055/assets/${post.image.id}`} alt="Home Page Visual" />
+                        <img src={`http://localhost:8055/assets/${post.image}`} alt="Home Page Visual" />
                         <h3>{post.title}</h3> {/* Display title */}
                         <div
                             dangerouslySetInnerHTML={{ __html: post.body }} // Render body as HTML
@@ -91,6 +101,13 @@ const HomePage = () => {
                     {loading ? 'Loading...' : 'Connect To CMS'}
                 </button>
             </div>
+            {tentipiIcon && (
+                <div className="tentipi-icon-container">
+                    <Link to="/tentipi">
+                        <img src={`http://localhost:8055/assets/${tentipiIcon}`} alt="Tentipi Icon" />
+                    </Link>
+                </div>
+            )}
             <EventList />
             <Footer />
         </div>

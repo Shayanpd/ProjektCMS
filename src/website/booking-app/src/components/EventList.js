@@ -22,7 +22,7 @@ const EventList = () => {
                 <div className="event-card" key={event.id}>
                     <Link to={`/events/${event.id}`} className="event-link">
                         <div className="event-image-container">
-                            <img src={event.image && `http://localhost:8055/assets/${event.image.id}`}
+                            <img src={event.image && `http://localhost:8055/assets/${event.image}`}
                                  alt={event.title} className="event-image" />
                             <div className="event-timer">
                                 <CountdownTimer eventDate={event.Date} />

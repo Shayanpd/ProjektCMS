@@ -19,6 +19,8 @@
 }
 
 
+
+
 /* Container for the fetch events button to help with positioning */
 .fetch-events-button-container {
     display: flex;
@@ -49,6 +51,7 @@
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     /* Smooth transition for hover effects */
 }
+
 .fetch-events-button:hover,
 .fetch-events-button:focus {
     /* Hover and focus states */
@@ -65,4 +68,14 @@
     /* Cursor to indicate disabled */
     box-shadow: none;
     /* No shadow for flat disabled button */
+}
+
+/* Container for the icon to help with positioning */
+.tentipi-icon-container {
+    display: flex;
+    /* Use flexbox for easy centering */
+    justify-content: center;
+    /* Center the icon horizontally */
+    margin-top: 20px;
+    /* Space above the icon */
 }
