@@ -22,11 +22,13 @@ const EventPage = () => {
                 status
                 title
                 Full_Description
-                Short_Description
+                Short_Descrition
                 Date
                 link
                 Locations
-                image
+                image{
+                id
+                }
             }
         }
         `,

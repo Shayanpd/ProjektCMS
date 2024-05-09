@@ -4,15 +4,17 @@ import fetchData from "../helpers/fetchData.js"
 export const getHomePageEvents = async () => {
     const data = await fetchData(
         `
-    query Event_List {
-        Event_List {
+    query HomePageEvents {
+    Event_List {
+        id
+        title
+        Date
+        Short_Descrition
+        image {
             id
-            title
-            Date
-            Short_Description
-            image 
         }
     }
+}
 
         `,
         {

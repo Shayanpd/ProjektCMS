@@ -1,8 +1,7 @@
-version: "3.8"
-
+version: "3" #docker compose up för att köra
 services:
   directus:
-    image: directus/directus:10.10.7
+    image: directus/directus:10.10.5
     ports:
       - 8055:8055
     volumes:
@@ -10,32 +9,13 @@ services:
       - ./uploads:/directus/uploads
       - ./extensions:/directus/extensions
     environment:
-      CORS_ENABLED: 'true'
-      CORS_ORIGIN: 'http://localhost:3000'
-      CORS_METHODS: 'GET,POST,PATCH,DELETE'
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: "http://localhost:3000"
+      CORS_METHODS: "GET,POST,PATCH,DELETE"
       KEY: "replace-with-random-value"
       SECRET: "replace-with-random-value"
       ADMIN_EMAIL: "admin@example.com"
       ADMIN_PASSWORD: "d1r3ctu5"
-      DB_CLIENT: "mysql"
-      DB_HOST: "mariadb" # Use the service name as the hostname
-      DB_PORT: "3306" # MariaDB default port
-      DB_DATABASE: "directus"
-      DB_USER: "directus"
-      DB_PASSWORD: "d1r3ctu5"
+      DB_CLIENT: "sqlite3"
+      DB_FILENAME: "/directus/database/data.db"
       WEBSOCKETS_ENABLED: "true"
-    depends_on:
-      - mariadb
-
-  mariadb:
-    image: mariadb:10.4
-    environment:
-      MYSQL_DATABASE: "directus"
-      MYSQL_USER: "directus"
-      MYSQL_PASSWORD: "d1r3ctu5"
-      MYSQL_ROOT_PASSWORD: "root"
-    ports:
-      - 3356:3306 # Expose the port correctly for MariaDB
-
-volumes:
-  mysql-data:

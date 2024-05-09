@@ -4,12 +4,14 @@ export const getHomepage = async () => {
     const data = await fetchData(
         `
 
-        query Home_Page {
+        query Homepage {
             Home_Page {
                 id
                 title
                 body
-                image 
+                image {
+                    id
+                }
             }
         }
         `,

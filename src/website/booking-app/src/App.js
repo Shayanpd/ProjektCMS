@@ -3,7 +3,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import EventPage from './pages/EventPage'; // Import the EventPage component
-import TentipiPage from './pages/TentipiPage';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
 
@@ -18,7 +17,6 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/events/:eventId" element={<EventPage />} /> {/* Route for EventPage */}
-                    <Route path="/tentipi" element={<TentipiPage />} /> {/* Route for TentipiPage */}
                     {/* Other routes will be added here */}
                 </Routes>
             </Router>
@@ -27,4 +25,3 @@ const App = () => {
 }
 
 export default App;
-//<Route path="/tentipi" element={<TentipiPage />} /> {/* Route for TentipiPage */}

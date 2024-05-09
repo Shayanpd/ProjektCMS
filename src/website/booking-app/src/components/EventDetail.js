@@ -15,7 +15,7 @@ const EventDetail = ({ event }) => {
     return (
         <div className="event-detail-container">
             <h1>{event.data.Event_List[0].title}</h1>
-            <img src={`http://localhost:8055/assets/${event.data.Event_List[0].image}`}
+            <img src={`http://localhost:8055/assets/${event.data.Event_List[0].image.id}`}
                  alt={event.title} className="event-image" />
             <p className="event-date">{event.data.Event_List[0].Date}</p>
             <p className="event-location">{event.data.Event_List[0].Location}</p>
