@@ -1,5 +1,7 @@
 // src/pages/HomePage.js
 import React, { useState, useEffect } from 'react';
+import Header from '../components/common/Header';
+import Footer from '../components/common/Footer';
 import EventList from '../components/EventList';
 import './HomePage.css'; // Add this line to import styles
 import {useQuery, useQueryClient} from 'react-query'
@@ -67,6 +69,7 @@ const HomePage = () => {
 
     return (
         <div>
+            <Header />
             <div className="homepage-banner">
                 {isSuccess && Home_Page.map((post) => (
                     <div key={post.id}>
@@ -89,6 +92,7 @@ const HomePage = () => {
                 </button>
             </div>
             <EventList />
+            <Footer />
         </div>
     );
 };

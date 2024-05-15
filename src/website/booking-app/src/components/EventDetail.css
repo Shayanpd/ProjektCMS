@@ -86,3 +86,47 @@
 .expired-message:hover {
     background-color: #e55347; /* A slightly darker shade for hover effect */
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the cart icon */
+.cart img {
+    height: 36px; /* Increased height for better visibility */
+    margin-right: 12px; /* Slightly increased margin */
+    transition: transform 0.3s ease; /* Smooth transform effect on hover */
+}
+
+.cart img:hover {
+    transform: scale(1.1); /* Slightly increase size on hover for better interactivity */
+}
+
+/* Style for the item count span */
+.cart span {
+    background-color: #ff4500; /* Bright orange background to catch user's attention */
+    color: white; /* White text for high contrast and readability */
+    padding: 4px 8px; /* Increased padding for a more rounded look */
+    border-radius: 16px; /* Fully rounded corners for a pill-like appearance */
+    font-size: 16px; /* Larger font size for better readability */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25); /* Subtle shadow for 3D effect */
+    transition: background-color 0.3s ease; /* Smooth background color transition on hover */
+}
+
+.cart span:hover {
+    background-color: #e03e00; /* Darker shade on hover for interactive feedback */
+}

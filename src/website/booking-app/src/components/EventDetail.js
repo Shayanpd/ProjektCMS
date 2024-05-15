@@ -2,17 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './EventDetail.css';
 import BookingForm from './BookingForm';
 import MapView from "./MapView";
-
+//import { useCart } from './cart/CartContext';
+import CartHeader from './cart/CartHeader';
 
 const EventDetail = ({ event }) => {
     const [showBookingForm, setShowBookingForm] = useState(false);
     const [isExpired, setIsExpired] = useState(false);
-
-    const handleBookingClick = () => {
-        if (!isExpired) {
-            setShowBookingForm(true);
-        }
-    };
 
     useEffect(() => {
         if (event && event.data.Event_List && event.data.Event_List.length > 0) {
@@ -43,22 +38,27 @@ const EventDetail = ({ event }) => {
     } : null;
 
     return (
-        <div className="event-detail-container">
-            <h1>{event.data.Event_List[0].title}</h1>
-            <img src={`http://localhost:8055/assets/${event.data.Event_List[0].image.id}`}
-                 alt={event.title} className="event-image" />
-            <p className="event-date">{event.data.Event_List[0].Date}</p>
-            <div className="event-description">{event.data.Event_List[0].Full_Description}</div>
-            {!isExpired ? (
-                <button className="booking-button" onClick={handleBookingClick}>
-                    Book Now
-                </button>
-            ) : (
-                <div className="expired-message">This event is expired</div>
-            )}
-            {locationData && <MapView location={locationData} />}
-
-            {showBookingForm && <BookingForm eventId={event.id} />}
+        <div>
+            <CartHeader />
+            <div className="event-detail-container">
+                <h1>{event.data.Event_List[0].title}</h1>
+                <img src={`http://localhost:8055/assets/${event.data.Event_List[0].image.id}`}
+                     alt={event.title} className="event-image" />
+                <p className="event-date">{event.data.Event_List[0].Date}</p>
+                <p className="event-location">{event.data.Event_List[0].Location}</p>
+                <div className="event-description">{event.data.Event_List[0].Full_Description}</div>
+                {locationData && <MapView location={locationData} />}
+                {!isExpired ? (
+                    <>
+                        <button className="booking-button" onClick={() => setShowBookingForm(!showBookingForm)}>
+                            Book Now
+                        </button>
+                    </>
+                ) : (
+                    <div className="expired-message">This event is expired</div>
+                )}
+                {showBookingForm && <BookingForm eventId={event.id} />}
+            </div>
         </div>
     );
 };

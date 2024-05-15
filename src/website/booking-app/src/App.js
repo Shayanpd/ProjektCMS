@@ -1,7 +1,5 @@
 // src/App.js
 import React from 'react';
-import Header from './components/common/Header';
-import Footer from './components/common/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import EventPage from './pages/EventPage'; // Import the EventPage component
@@ -16,13 +14,11 @@ const App = () => {
     return (
         <QueryClientProvider client={queryClient}>
             <Router>
-                <Header /> {/* Header component */}
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/events/:eventId" element={<EventPage />} /> {/* Route for EventPage */}
                     {/* Other routes will be added here */}
                 </Routes>
-                <Footer /> {/* Footer component */}
             </Router>
         </QueryClientProvider>
     );
