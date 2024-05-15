@@ -1,4 +1,4 @@
-import writeData from "../helpers/writeData.js";
+import authData from "../helpers/authData";
 
 export const refreshAuthentication = async () => {
 
@@ -10,7 +10,7 @@ export const refreshAuthentication = async () => {
 
     let refreshToken = refreshTokenCookie.split('=')[1];
 
-    const data = await writeData(
+    const data = await authData(
         `
         mutation Auth_refresh {
             auth_refresh(refresh_token: "${refreshToken}") {

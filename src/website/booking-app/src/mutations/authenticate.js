@@ -1,7 +1,7 @@
-import writeData from "../helpers/writeData.js";
+import authData from "../helpers/authData.js";
 
 export const authenticate = async () => {
-    const data = await writeData(
+    const data = await authData(
         `
         mutation Auth_login {
             auth_login(email: "${process.env.REACT_APP_EMAIL}", password: "${process.env.REACT_APP_PASSWORD}") {
