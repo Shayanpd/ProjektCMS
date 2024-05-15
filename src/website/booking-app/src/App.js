@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import EventPage from './pages/EventPage'; // Import the EventPage component
 import AboutPage from './pages/AboutPage';
 import Header from './components/common/Header';
+import CartHeader from './components/cart/CartHeader';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
 
@@ -17,6 +18,7 @@ const App = () => {
         <QueryClientProvider client={queryClient}>
             <Router>
             <Header />
+            <CartHeader />
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<AboutPage />} />

@@ -3,7 +3,6 @@ import './EventDetail.css';
 import BookingForm from './BookingForm';
 import MapView from "./MapView";
 //import { useCart } from './cart/CartContext';
-import CartHeader from './cart/CartHeader';
 
 const EventDetail = ({ event }) => {
     const [showBookingForm, setShowBookingForm] = useState(false);
@@ -39,7 +38,6 @@ const EventDetail = ({ event }) => {
 
     return (
         <div>
-            <CartHeader />
             <div className="event-detail-container">
                 <h1>{event.data.Event_List[0].title}</h1>
                 <img src={`http://localhost:8055/assets/${event.data.Event_List[0].image.id}`}
