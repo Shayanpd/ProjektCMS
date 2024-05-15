@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import EventList from '../components/EventList';
 import './HomePage.css'; // Add this line to import styles
@@ -66,7 +65,6 @@ const HomePage = () => {
 
     return (
         <div>
-            <Header />
             <div className="homepage-banner">
                 {isSuccess && Home_Page.map((post) => (
                     <div key={post.id}>

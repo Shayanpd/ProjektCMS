@@ -5,6 +5,7 @@ import Login from '../Login';
 import Register from '../Register';
 import LoginModal from '../LoginModal';
 import RegisterModal from "../RegisterModal";
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -20,7 +21,9 @@ const Header = () => {
 
     return (
         <header className="site-header">
-            <h1>Event Booking System</h1>
+            <Link to="/">
+                <h1>Event Booking System</h1>
+            </Link>
             <div className="button-container">
                 <Login onLoginClick={toggleLoginModal} />
                 <Register onLoginClick={toggleRegisterModal} />

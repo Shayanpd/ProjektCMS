@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import EventPage from './pages/EventPage'; // Import the EventPage component
 import AboutPage from './pages/AboutPage';
+import Header from './components/common/Header';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
 
@@ -15,6 +16,7 @@ const App = () => {
     return (
         <QueryClientProvider client={queryClient}>
             <Router>
+            <Header />
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<AboutPage />} />
