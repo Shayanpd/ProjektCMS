@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import EventPage from './pages/EventPage'; // Import the EventPage component
+import AboutPage from './pages/AboutPage';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
 
@@ -16,6 +17,7 @@ const App = () => {
             <Router>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
+                    <Route path="/about" element={<AboutPage />} />
                     <Route path="/events/:eventId" element={<EventPage />} /> {/* Route for EventPage */}
                     {/* Other routes will be added here */}
                 </Routes>

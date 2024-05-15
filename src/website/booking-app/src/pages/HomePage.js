@@ -1,26 +1,24 @@
-// src/pages/HomePage.js
 import React, { useState, useEffect } from 'react';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import EventList from '../components/EventList';
 import './HomePage.css'; // Add this line to import styles
-import {useQuery, useQueryClient} from 'react-query'
+import { useQuery, useQueryClient } from 'react-query';
 import { getHomepage } from '../queries/getHomePage.js';
 import { fetchTokens } from '../mutations/authenticate.js';
 import { refreshTokens } from '../mutations/refreshAuthentication.js';
+import { Link } from 'react-router-dom'; // Import Link
 
 const HomePage = () => {
     console.log("HomePage is rendering");
     const [loading, setLoading] = useState(false);
     const queryClient = useQueryClient();
-    const { status, data: Home_Page, error, isFetching, isSuccess } = useQuery("Home_Page", async () => await getHomepage())
+    const { status, data: Home_Page, error, isFetching, isSuccess } = useQuery("Home_Page", async () => await getHomepage());
 
     console.log(Home_Page);
 
-
     useEffect(() => {
         fetchTokens();
-
     }, []);
 
     const retrieveTestCollectionFromCMS = async () => {
@@ -66,7 +64,6 @@ const HomePage = () => {
         }
     };
 
-
     return (
         <div>
             <Header />
@@ -90,6 +87,11 @@ const HomePage = () => {
                 >
                     {loading ? 'Loading...' : 'Connect To CMS'}
                 </button>
+                <Link to="/about">
+                    <button className="about-page-button-container">
+                        About Page
+                    </button>
+                </Link>
             </div>
             <EventList />
             <Footer />
