@@ -8,6 +8,8 @@ import Header from './components/common/Header';
 import CartHeader from './components/cart/CartHeader';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
+import CartPage from './components/cart/CartPage';
+
 
 // Create a client
 const queryClient = new QueryClient();
@@ -23,6 +25,7 @@ const App = () => {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/events/:eventId" element={<EventPage />} /> {/* Route for EventPage */}
+                    <Route path="/cart" element={<CartPage />} /> {/* Use element prop */}
                     {/* Other routes will be added here */}
                 </Routes>
             </Router>
