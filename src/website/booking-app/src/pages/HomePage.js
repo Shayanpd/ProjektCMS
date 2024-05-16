@@ -78,13 +78,13 @@ const HomePage = () => {
                 ))}
             </div>
             <div className="fetch-events-button-container">
-                <button
+                {/* <button
                     onClick={retrieveTestCollectionFromCMS}
                     disabled={loading}
                     className="fetch-events-button"
                 >
                     {loading ? 'Loading...' : 'Connect To CMS'}
-                </button>
+                </button>*/}
                 <Link to="/about">
                     <button className="about-page-button-container">
                         About Page
