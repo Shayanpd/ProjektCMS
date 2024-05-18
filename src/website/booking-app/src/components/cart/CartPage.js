@@ -1,12 +1,19 @@
 // src/components/cart/CartPage.js
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useCart } from './CartContext';
 import TicketDetails from './TicketDetails'; // Import the TicketDetails component
 import './CartPage.css'; // Optional: Create a CSS file for styling
+import {useNavigate} from "react-router-dom";
 
 const CartPage = () => {
     const { cartItems, removeFromCart, buyTickets } = useCart();  // Destructure removeFromCart and buyTickets from useCart
+    const navigate = useNavigate();   
 
+    useEffect(() => {
+        if(cartItems.length ==0) {
+            navigate('/');
+        }
+    }, [cartItems, navigate]);
     const handleBuyAll = () => {
         buyTickets();
     };
