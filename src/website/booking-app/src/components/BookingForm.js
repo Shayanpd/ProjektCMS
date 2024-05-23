@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './BookingForm.css'; // Make sure your CSS is updated accordingly
 import { useCart } from './cart/CartContext';
+import { getTicketsForEvent } from "../queries/TicketQueries";
 
 
 const BookingForm = ({ eventId }) => {
@@ -8,6 +9,7 @@ const BookingForm = ({ eventId }) => {
     const [numberOfTickets, setNumberOfTickets] = useState(1); // Number of tickets to buy
     const [message, setMessage] = useState('');
     const { addToCart } = useCart();
+    const [tickets, setTickets] = useState([]);
 
 
 
@@ -58,15 +60,45 @@ const BookingForm = ({ eventId }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         const ticket = {
-            id: eventId,  // Assuming eventId is unique for each ticket
-            antal: numberOfTickets,
+            id: 10,  // Assuming eventId is unique for each ticket
+            antal: 1,
             price: 100 * numberOfTickets,  // Replace with actual price if available
-            image: 'path_to_image'  // Replace with actual image path
         };
 
-        console.log(`Submitting form with ticketCount: ${numberOfTickets}`);
-        // Here you would typically send the number of tickets to the server
+        const testGetTicketsForEvent = async () => {
+            const testEventId = eventId; // Replace with a valid eventId for testing
+
+            try {
+                const ticketsData  = await getTicketsForEvent(testEventId);
+                console.log('Fetched tickets data:', ticketsData);
+
+
+
+                if (Array.isArray(ticketsData.Tickets) && ticketsData.Tickets.length > 0) {
+                    console.log('Nested Ticket id:', ticketsData.Tickets[0].id);
+                    console.log('Nested Ticket price:', ticketsData.Tickets[0].Price);
+
+                    ticket.id= ticketsData.Tickets[0].id
+                    ticket.price= ticketsData.Tickets[0].Price
+                    ticket.antal= ticketsData.Tickets[0].Number_Of_Tickets - ticketsData.Tickets[0].Number_Of_Tickets+1
+
+                } else {
+                    console.error('No tickets found for the event.');
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error fetching tickets:', error);
+                return null;
+            }
+        };
+
+        testGetTicketsForEvent();
+
+
+
+
         if (numberOfTickets > 0 && numberOfTickets <= totalTickets) {
             addToCart(ticket); // Add the ticket object to the cart
             setTotalTickets(prev => prev - numberOfTickets); // Decrement the number of available tickets

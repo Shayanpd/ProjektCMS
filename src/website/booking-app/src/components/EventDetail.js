@@ -55,7 +55,7 @@ const EventDetail = ({ event }) => {
                 ) : (
                     <div className="expired-message">This event is expired</div>
                 )}
-                {showBookingForm && <BookingForm eventId={event.id} />}
+                {showBookingForm && <BookingForm eventId={event.data.Event_List[0].id} />}
             </div>
         </div>
     );

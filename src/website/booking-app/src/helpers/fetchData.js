@@ -30,6 +30,7 @@ const fetchData = async (query, { variables = {}, token }) => {
             }
         });
         const message = json.errors.map(error => error.message).join("\n");
+        console.log("ERROR")
         throw new Error(message);
     }
 
